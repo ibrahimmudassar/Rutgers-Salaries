@@ -1,6 +1,9 @@
 # Rutgers Salaries
 
 ## Overview
+### Treemap of All Salaries > 500k
+![Treemap of All Salaries > 500k](/images/Treemap%20Salaries%20More%20Than%20500k.png)
+
 ### Frequency of All Salaries 
 ![Frequency of All Salaries](/images/Histogram%20All.png)
 
@@ -9,6 +12,11 @@
 
 ### Boxplot of Professor Salaries Sorted by Campus
 ![Boxplot of Professor Salaries Sorted by Campus](/images/Boxplot%20By%20Campus%20Professors%20Only.png)
+
+## Conclusions
+
+* Some of the departments that are most well paid are at the NJ Medical School and Robert Wood Johnson
+* Other well paid departments include Mens Basketball and Football
 
 ## Collection
 
