@@ -29,3 +29,6 @@ You can find how I did it in [rutgers_salaries_async.py](/rutgers_salaries_async
 
 ## Graphing
 Used Python Plotly code is viewable in [main.py](/main.py)
+
+## Other Graphs
+![Rutgers New Brunswick Salaries Sorted by Department](/images/rutgers_salaries_by_depart.png)
