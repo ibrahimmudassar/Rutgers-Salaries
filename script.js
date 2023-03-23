@@ -1,12 +1,27 @@
-$.get("https://raw.githubusercontent.com/ibrahimmudassar/Rutgers-Salaries/main/README.md", function(data) {
-  var converter = new showdown.Converter();
+$(document).ready(function () {
+  // Setup - add a text input to each footer cell
+  $('#mainTable tfoot th').each(function () {
+      var title = $(this).text();
+      $(this).html('<input type="text" placeholder="Search ' + title + '" />');
+  });
 
-  document.getElementById('readme').innerHTML = converter.makeHtml(data);
-});
+  // DataTable
+  var table = $('#mainTable').DataTable({
+      initComplete: function () {
+          // Apply the search
+          this.api()
+              .columns()
+              .every(function () {
+                  var that = this;
 
-
-$('#mainTable').DataTable({
-  stateSave: true,
+                  $('input', this.footer()).on('keyup change clear', function () {
+                      if (that.search() !== this.value) {
+                          that.search(this.value).draw();
+                      }
+                  });
+              });
+      },
+      stateSave: true,
   order: [[4, 'desc']],
 
   scrollY: '98vh',
@@ -39,4 +54,5 @@ $('#mainTable').DataTable({
         return number;
     }, },
   ]
+  });
 });
