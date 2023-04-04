@@ -15,6 +15,8 @@
 
 ## Conclusions
 
+[This data can be viewed here](https://ibrahimmudassar.github.io/Rutgers-Salaries/)
+
 * Some of the departments that are most well paid are at the NJ Medical School and Robert Wood Johnson
 * Other well paid departments include Mens Basketball and Football
 
