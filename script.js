@@ -1,59 +1,50 @@
 $(document).ready(function () {
-  // Setup - add a text input to each footer cell
-  $('#mainTable tfoot th').each(function () {
-      var title = $(this).text();
-      $(this).html('<input type="text" placeholder="Search ' + title + '" />');
-  });
-
   // DataTable
-  var table = $('#mainTable').DataTable({
-      initComplete: function () {
-          // Apply the search
-          this.api()
-              .columns()
-              .every(function () {
-                  var that = this;
+  var table = $("#mainTable").DataTable({
+    order: [[5, "desc"]],
 
-                  $('input', this.footer()).on('keyup change clear', function () {
-                      if (that.search() !== this.value) {
-                          that.search(this.value).draw();
-                      }
-                  });
-              });
+    scrollY: "98vh",
+    scrollCollapse: true,
+
+    lengthMenu: [
+      [15, 50, 100, -1],
+      [15, 50, 100, "All"],
+    ],
+
+    searchBuilder: true,
+
+    responsive: true,
+    columnDefs: [
+      { responsivePriority: 1, targets: 0 },
+      { responsivePriority: 2, targets: -1 },
+    ],
+
+    deferRender: true,
+    ajax: {
+      url: "https://raw.githubusercontent.com/ibrahimmudassar/Rutgers-Salaries/main/rutgers_salaries.csv",
+      dataType: "text",
+      dataSrc: function (csvdata) {
+        return $.csv.toObjects(csvdata);
       },
-      stateSave: true,
-  order: [[4, 'desc']],
+    },
 
-  scrollY: '98vh',
-  scrollCollapse: true,
+    columns: [
+      { data: "Name" },
+      { data: "Campus" },
+      { data: "Department" },
+      { data: "Title" },
+      { data: "Hire Date" },
+      {
+        data: "Gross Pay",
+        render: function (data) {
+          var number = $.fn.dataTable.render
+            .number(",", ".", 0, "$")
+            .display(data);
 
-  lengthMenu: [
-    [15, 50, 100, -1],
-    [15, 50, 100, 'All'],
-  ],
-
-  deferRender: true,
-  ajax: {
-    url: "https://raw.githubusercontent.com/ibrahimmudassar/Rutgers-Salaries/main/rutgers_salaries.csv",
-    dataType: "text",
-    dataSrc: function (csvdata) {
-    return $.csv.toObjects(csvdata);
-  }},
-
-  columns: [
-    { data: "Name" },
-    { data: "Campus" },
-    { data: "Depart" },
-    { data: "Title" },
-    { data: "Hire Date" },
-    { data: "Gross Pay", 
-      render: function (data) {
-        var number = $.fn.dataTable.render
-          .number(',', '.', 2, '$')
-          .display(data);
-
-        return number;
-    }, },
-  ]
+          return number;
+        },
+      },
+    ],
   });
+  table.searchBuilder.container().prependTo(table.table().container());
 });

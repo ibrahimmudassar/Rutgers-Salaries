@@ -1,97 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Rutgers Salaries</title>
-    <link rel="icon" href="./favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css"
-        href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.13.3/css/dataTables.bootstrap5.min.css">
-    <link href="https://code.jquery.com/jquery-3.5.1.js">
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="//cdn.datatables.net/1.13.3/css/dataTables.bootstrap5.min.css"
+    />
+    <link href="https://code.jquery.com/jquery-3.5.1.js" />
     <script src="https://cdn.datatables.net/1.13.3/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.3/js/jquery.dataTables.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/1.0.21/jquery.csv.min.js"
-        integrity="sha512-Y8iWYJDo6HiTo5xtml1g4QqHtl/PO1w+dmUpQfQSOTqKNsMhExfyPN2ncNAe9JuJUSKzwK/b6oaNPop4MXzkwg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/1.0.21/jquery.csv.min.js"
+      integrity="sha512-Y8iWYJDo6HiTo5xtml1g4QqHtl/PO1w+dmUpQfQSOTqKNsMhExfyPN2ncNAe9JuJUSKzwK/b6oaNPop4MXzkwg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <script src="https://cdn.datatables.net/1.13.3/js/dataTables.bootstrap5.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/showdown@2.1.0/dist/showdown.min.js"></script>
-</head>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.datatables.net/responsive/2.4.1/css/responsive.dataTables.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.datatables.net/searchbuilder/1.4.2/css/searchBuilder.bootstrap5.min.css"
+    />
+    <script src="https://cdn.datatables.net/responsive/2.4.1/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/searchbuilder/1.4.2/js/dataTables.searchBuilder.min.js"></script>
+    <script src="https://cdn.datatables.net/searchbuilder/1.4.2/js/searchBuilder.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/datetime/1.4.0/js/dataTables.dateTime.min.js"></script>
+  </head>
 
-<body>
+  <body>
     <main class="container-fluid">
-        <div class="headcontainer">
-            <img class='resize_fit_center'
-                src="https://raw.githubusercontent.com/ibrahimmudassar/Rutgers-Salaries/main/images/RutgersSalaries.png"
-                alt="Rutgers Salaries">
-        </div>
-        <table id="mainTable" class="table table-hover table-striped">
-            <thead class="table-dark">
-                <tr>
-                    <th>Name</th>
-                    <th>Campus</th>
-                    <th>Depart</th>
-                    <th>Title</th>
-                    <th>Total Pay</th>
-                </tr>
-            </thead>
-            <tfoot>
-                <tr>
-                    <th>Name</th>
-                    <th>Campus</th>
-                    <th>Depart</th>
-                    <th>Title</th>
-                    <th>Total Pay</th>
-                </tr>
-            </tfoot>
-            <tbody></tbody>
-        </table>
-        <div id="readme">
-            <h3 id="treemapofallsalaries500k">Treemap of All Salaries 500k</h3>
-            <p><img src="https://raw.githubusercontent.com/ibrahimmudassar/Rutgers-Salaries/main/images/Treemap%20Salaries%20More%20Than%20500k.png"
-                    alt="Treemap of All Salaries > 500k"></p>
-            <h3 id="frequencyofallsalaries">Frequency of All Salaries</h3>
-            <p><img src="https://raw.githubusercontent.com/ibrahimmudassar/Rutgers-Salaries/main/images/Histogram%20All.png"
-                    alt="Frequency of All Salaries" /></p>
-            <h3 id="boxplotofallsalariessortedbycampus">Boxplot of All Salaries Sorted by Campus</h3>
-            <p><img src="https://raw.githubusercontent.com/ibrahimmudassar/Rutgers-Salaries/main/images/Boxplot%20By%20Campus%20All.png"
-                    alt="Boxplot of All Salaries Sorted by Campus" /></p>
-            <h3 id="boxplotofprofessorsalariessortedbycampus">Boxplot of Professor Salaries Sorted by Campus</h3>
-            <p><img src="https://raw.githubusercontent.com/ibrahimmudassar/Rutgers-Salaries/main/images/Boxplot%20By%20Campus%20Professors%20Only.png"
-                    alt="Boxplot of Professor Salaries Sorted by Campus" /></p>
-            <h2 id="conclusions">Conclusions</h2>
-            <ul>
-                <li>Some of the departments that are most well paid are at the NJ Medical School and Robert Wood Johnson
-                </li>
-                <li>Other well paid departments include Mens Basketball and Football</li>
-            </ul>
-            <h2 id="collection">Collection</h2>
-            <p>This data was scraped from <a
-                    href="https://content-static.app.com/datauniverse/caspio/bundle/Rutgers_salaries.html">DataUniverse
-                    - Asbury Park Press</a>
-            </p>
-            <p>You can find how I did it in <a
-                    href="https://github.com/ibrahimmudassar/Rutgers-Salaries/blob/9e814f49d2d8fba23425c274b18ff5318f5cd77a/rutgers_salaries_async.py">rutgers_salaries_async.py</a>
-            </p>
-            <ul>
-                <li>This takes ~300 seconds to run</li>
-                <li>Creates a .csv file that is ~25k lines</li>
-                <li>Includes Name, Campus, Department, and Total Pay</li>
-            </ul>
-            <h2 id="graphing">Graphing</h2>
-            <p>Used Python Plotly code is viewable in <a
-                    href="https://github.com/ibrahimmudassar/Rutgers-Salaries/blob/9e814f49d2d8fba23425c274b18ff5318f5cd77a/main.py">main.py</a>
-            </p>
-            <h2 id="othergraphs">Other Graphs</h2>
-            <p><img src="https://raw.githubusercontent.com/ibrahimmudassar/Rutgers-Salaries/main/images/rutgers_salaries_by_depart.png"
-                    alt="Rutgers New Brunswick Salaries Sorted by Department" /></p>
-        </div>
+      <div class="headcontainer">
+        <img
+          class="resize_fit_center"
+          src="https://raw.githubusercontent.com/ibrahimmudassar/Rutgers-Salaries/main/images/RutgersSalaries.png"
+          alt="Rutgers Salaries"
+        />
+      </div>
+      <table id="mainTable" class="table table-hover table-striped">
+        <thead class="table-dark">
+          <tr>
+            <th>Name</th>
+            <th>Campus</th>
+            <th>Department</th>
+            <th>Title</th>
+            <th>Hire Date</th>
+            <th>Gross Pay</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <div id="readme">
+        <h3 id="treemapofallsalaries500k">Treemap of All Salaries 500k</h3>
+        <p>
+          <img
+            src="https://raw.githubusercontent.com/ibrahimmudassar/Rutgers-Salaries/main/images/Treemap%20Salaries%20More%20Than%20500k.png"
+            alt="Treemap of All Salaries > 500k"
+          />
+        </p>
+        <h3 id="frequencyofallsalaries">Frequency of All Salaries</h3>
+        <p>
+          <img
+            src="https://raw.githubusercontent.com/ibrahimmudassar/Rutgers-Salaries/main/images/Histogram%20All.png"
+            alt="Frequency of All Salaries"
+          />
+        </p>
+        <h3 id="boxplotofallsalariessortedbycampus">
+          Boxplot of All Salaries Sorted by Campus
+        </h3>
+        <p>
+          <img
+            src="https://raw.githubusercontent.com/ibrahimmudassar/Rutgers-Salaries/main/images/Boxplot%20By%20Campus%20All.png"
+            alt="Boxplot of All Salaries Sorted by Campus"
+          />
+        </p>
+        <h3 id="boxplotofprofessorsalariessortedbycampus">
+          Boxplot of Professor Salaries Sorted by Campus
+        </h3>
+        <p>
+          <img
+            src="https://raw.githubusercontent.com/ibrahimmudassar/Rutgers-Salaries/main/images/Boxplot%20By%20Campus%20Professors%20Only.png"
+            alt="Boxplot of Professor Salaries Sorted by Campus"
+          />
+        </p>
+        <h2 id="conclusions">Conclusions</h2>
+        <ul>
+          <li>
+            Some of the departments that are most well paid are at the NJ
+            Medical School and Robert Wood Johnson
+          </li>
+          <li>
+            Other well paid departments include Mens Basketball and Football
+          </li>
+        </ul>
+        <h2 id="collection">Collection</h2>
+        <p>
+          This data was scraped from
+          <a
+            href="https://content-static.app.com/datauniverse/caspio/bundle/Rutgers_salaries.html"
+            >DataUniverse - Asbury Park Press</a
+          >
+        </p>
+        <p>
+          You can find how I did it in
+          <a
+            href="https://github.com/ibrahimmudassar/Rutgers-Salaries/blob/9e814f49d2d8fba23425c274b18ff5318f5cd77a/rutgers_salaries_async.py"
+            >rutgers_salaries_async.py</a
+          >
+        </p>
+        <ul>
+          <li>This takes ~300 seconds to run</li>
+          <li>Creates a .csv file that is ~25k lines</li>
+          <li>Includes Name, Campus, Department, and Total Pay</li>
+        </ul>
+        <h2 id="graphing">Graphing</h2>
+        <p>
+          Used Python Plotly code is viewable in
+          <a
+            href="https://github.com/ibrahimmudassar/Rutgers-Salaries/blob/9e814f49d2d8fba23425c274b18ff5318f5cd77a/main.py"
+            >main.py</a
+          >
+        </p>
+        <h2 id="othergraphs">Other Graphs</h2>
+        <p>
+          <img
+            src="https://raw.githubusercontent.com/ibrahimmudassar/Rutgers-Salaries/main/images/rutgers_salaries_by_depart.png"
+            alt="Rutgers New Brunswick Salaries Sorted by Department"
+          />
+        </p>
+      </div>
     </main>
     <script src="script.js"></script>
-</body>
-
+  </body>
 </html>
