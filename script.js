@@ -46,5 +46,5 @@ $(document).ready(function () {
       },
     ],
   });
-  table.searchBuilder.container().prependTo(table.table().container());
+  table.searchBuilder.container().appendTo(table.table().container());
 });
