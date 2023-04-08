@@ -45,7 +45,8 @@ $(document).ready(function () {
     { data: "Campus" },
     { data: "Depart" },
     { data: "Title" },
-    { data: "Total Pay", 
+    { data: "Hire Date" },
+    { data: "Gross Pay", 
       render: function (data) {
         var number = $.fn.dataTable.render
           .number(',', '.', 2, '$')
